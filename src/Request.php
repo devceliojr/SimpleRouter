@@ -91,5 +91,4 @@ abstract class Request
     {
         return array_values(array_filter(explode($separator, $base)));
     }
-
 }
