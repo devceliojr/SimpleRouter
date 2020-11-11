@@ -1,0 +1,23 @@
+{
+    "name": "devceliojr/simplerouter",
+    "description": "Sistema de gerênciamento de rotas.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Celio Junior",
+            "email": "profissional.celiovmjunior@outlook.com",
+            "homepage": "https://fb.com/celiojr1994",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "SimpleRouter\\Application\\": "src/"
+        }
+    }
+}
