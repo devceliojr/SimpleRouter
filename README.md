@@ -11,4 +11,4 @@ RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?route=/$1 [L,QSA]
 ```
 ### Criar o index.php
-![Criar Index](https://raw.githubusercontent.com/devceliojr/SimpleRouter/main/img/Code_Preview.png)
+![Criar Index](https://github.com/devceliojr/SimpleRouter/blob/main/img/CodePreview.png?raw=true)
