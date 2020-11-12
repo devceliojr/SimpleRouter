@@ -9,14 +9,29 @@ namespace SimpleRouter\Application;
  */
 abstract class Request
 {
-    /** @var string */
+    /**
+     * @access private
+     * @var string
+     */
     private string $url;
-    /** @var string */
+
+    /**
+     * @access private
+     * @var string
+     */
     private string $httpMethod;
-    /** @var object */
+
+    /**
+     * @access private
+     * @var object
+     */
     private object $parameters;
 
-    /** Request constructor. */
+    /**
+     * Request constructor.
+     * @access protected
+     * @return void
+     */
     protected function __construct()
     {
         $this->setUrl();
@@ -24,7 +39,10 @@ abstract class Request
         $this->setParameters();
     }
 
-    /** @return string */
+    /**
+     * @access protected
+     * @return string
+     */
     protected function getUrl(): string
     {
         if (substr($this->url, 0) === "/") {
@@ -38,31 +56,47 @@ abstract class Request
         return $this->url;
     }
 
-    /** Define the URL */
+    /**
+     * @access private
+     * @return void
+     */
     private function setUrl(): void
     {
         $this->url = filter_input(INPUT_GET, 'route', FILTER_SANITIZE_STRING) ?: '/';
     }
 
-    /** @return string */
+    /**
+     * @access protected
+     * @return string
+     */
     protected function getHttpMethod(): string
     {
         return $this->httpMethod;
     }
 
-    /** Define the HTTP Verb method */
+    /**
+     * @access private
+     * @return void
+     */
     private function setHttpMethod(): void
     {
         $this->httpMethod = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_SANITIZE_STRING);
     }
 
-    /** @return object */
+    /**
+     * @access protected
+     * @return object
+     */
     protected function getParameters(): object
     {
         return $this->parameters;
     }
 
-    /** @param array|null $data */
+    /**
+     * @access protected
+     * @param array|null $data
+     * @return void
+     */
     protected function setParameters(? array $data = null): void
     {
         $obj = new \stdClass();
@@ -83,6 +117,7 @@ abstract class Request
     }
 
     /**
+     * @access protected
      * @param string $separator
      * @param string $base
      * @return array

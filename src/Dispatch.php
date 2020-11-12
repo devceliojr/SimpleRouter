@@ -9,34 +9,64 @@ namespace SimpleRouter\Application;
  */
 abstract class Dispatch extends Request
 {
-    /** @var string|null */
+    /**
+     * @access protected
+     * @var string|null
+     */
     protected ?string $namespace = null;
 
-    /** @var string|null */
+    /**
+     * @access protected
+     * @var string|null
+     */
     protected ?string $group = null;
 
-    /** @var string */
+    /**
+     * @access private
+     * @var string
+     */
     private string $controller;
 
-    /** @var string */
+    /**
+     * @access private
+     * @var string
+     */
     private string $method;
 
-    /** @var array */
+    /**
+     * @access protected
+     * @var array
+     */
     protected array $route;
 
-    /** @var int|null */
+    /**
+     * @access private
+     * @var int|null
+     */
     private ?int $error = null;
 
-    /** @const int Bad Request */
+    /**
+     * @access public
+     * @const int Bad Request
+     */
     public const BAD_REQUEST = 400;
 
-    /** @const int Not Found */
+    /**
+     * @access public
+     * @const int Not Found
+     */
     public const NOT_FOUND = 404;
 
-    /** @const int Method Not Allowed */
+    /**
+     * @access public
+     * @const int Method Not Allowed
+     */
     public const METHOD_NOT_ALLOWED = 405;
 
-    /** @const int Not Implemented */
+    /**
+     * @access public
+     * @const int Not Implemented
+     */
     public const NOT_IMPLEMENTED = 501;
 
     /**
