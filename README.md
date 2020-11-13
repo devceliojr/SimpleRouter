@@ -3,7 +3,8 @@
 ___
 
 ### Criar o arquivo .htaccess
-> O arquivo ```.htaccess`` deve ser criado na pasta raiz.
+> O arquivo **_.htaccess_** deve ser criado na pasta raiz.
+> 
 ```regex
 RewriteEngine On
 Options All -Indexes
@@ -52,7 +53,7 @@ var_dump($route);
 ```php
 SimpleRouter\Application\Router: (object) [Object ID #3][2 properties]
     routes: (array) [1 element]
-        GET: (array) [2 elements]
+        GET: (array) [2 elements****************]
             /users/all: (string) "Controller@method"
             /users/{id}/profile: (string) "Controller@method"
 ```
