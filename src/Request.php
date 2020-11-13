@@ -97,7 +97,7 @@ abstract class Request
      * @param array|null $data
      * @return void
      */
-    protected function setParameters(? array $data = null): void
+    protected function setParameters(?array $data = null): void
     {
         $obj = new \stdClass();
 

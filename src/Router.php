@@ -35,7 +35,7 @@ class Router extends Dispatch
      * @param string|null $group
      * @return Router
      */
-    public function group(? string $group) : Router
+    public function group(?string $group = null) : Router
     {
         $this->group = ($group ? str_replace("/", "", $group) : null);
         return $this;
@@ -45,7 +45,8 @@ class Router extends Dispatch
      * @access public
      * @param string $method
      * @param string $path
-     * @param $callback
+     * @param mixed $callback
+     * @return void
      */
     public function create(string $method, string $path, $callback): void
     {
@@ -55,7 +56,8 @@ class Router extends Dispatch
     /**
      * @access public
      * @param string $path
-     * @param $handler
+     * @param mixed $handler
+     * @return void
      */
     public function post(string $path, $handler): void
     {
@@ -65,7 +67,8 @@ class Router extends Dispatch
     /**
      * @access public
      * @param string $path
-     * @param $handler
+     * @param mixed $handler
+     * @return void
      */
     public function get(string $path, $handler): void
     {
@@ -75,7 +78,8 @@ class Router extends Dispatch
     /**
      * @access public
      * @param string $path
-     * @param $handler
+     * @param mixed $handler
+     * @return void
      */
     public function put(string $path, $handler): void
     {
@@ -85,7 +89,8 @@ class Router extends Dispatch
     /**
      * @access public
      * @param string $path
-     * @param $handler
+     * @param mixed $handler
+     * @return void
      */
     public function patch(string $path, $handler): void
     {
@@ -95,7 +100,8 @@ class Router extends Dispatch
     /**
      * @access public
      * @param string $path
-     * @param $handler
+     * @param mixed $handler
+     * @return void
      */
     public function delete(string $path, $handler): void
     {
@@ -105,10 +111,23 @@ class Router extends Dispatch
     /**
      * @access public
      * @param string $route
+     * @return void
      */
     public function redirect(string $route): void
     {
         header("Location: {$route}");
         exit;
+    }
+
+    /**
+     * @access public
+     * @return array $route
+     */
+    public function __debugInfo(): array
+    {
+        return array(
+            "routes" => $this->route,
+            "error" => $this->error()
+        );
     }
 }

@@ -37,7 +37,7 @@ abstract class Dispatch extends Request
      * @access protected
      * @var array
      */
-    protected array $route;
+    protected array $route = array();
 
     /**
      * @access private
@@ -72,6 +72,7 @@ abstract class Dispatch extends Request
     /**
      * @access public
      * Dispatch constructor.
+     * @return void
      */
     public function __construct()
     {
@@ -144,6 +145,7 @@ abstract class Dispatch extends Request
      * @param string $route
      * @param string $url
      * @param array $keys
+     * @return void
      */
     private function traitData(string $route, string $url, array $keys): void
     {
