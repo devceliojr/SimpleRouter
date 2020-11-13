@@ -31,7 +31,7 @@ ___
 >
 
 #### Exemplo:
-```injectablephp
+```php
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -49,7 +49,7 @@ var_dump($route);
 ```
 #### Output:
 
-```injectablephp
+```php
 SimpleRouter\Application\Router: (object) [Object ID #3][2 properties]
     routes: (array) [1 element]
         GET: (array) [2 elements]
@@ -66,7 +66,7 @@ ___
 
 > Basicamente é uma rota que não receberá parâmetros.
 
-```injectablephp
+```php
 <?php
 # Autoload.
 require_once __DIR__ . '/vendor/autoload.php';
@@ -92,7 +92,7 @@ $route->dispatch();
 > Ao contrário da anterior, está rora receberá parâmetros que podem ser recuperados
 > posteriormente.
 
-```injectablephp
+```php
 <?php
 # Autoload.
 require_once __DIR__ . '/vendor/autoload.php';
@@ -118,7 +118,7 @@ $route->dispatch();
 
 > É possível (E muito simples) definir uma função de retorno para o **_VERBO HTTP_**
 > que você desejar!
-```injectablephp
+```php
 <?php
 # Autoload.
 require_once __DIR__ . '/vendor/autoload.php';
@@ -143,7 +143,7 @@ $route->dispatch();
 ___
 
 ## Redirecionamento
-```injectablephp
+```php
 <?php
 # Autoload.
 require_once __DIR__ . '/vendor/autoload.php';
@@ -171,7 +171,7 @@ ___
 > O tratamento dos erros pode ser muito útil na criação de uma classe ou função
 > que se responsabilizará por direcionar o usuário em caso de erro na rota.
 
-```injectablephp
+```php
 <?php
 # Autoload.
 require_once __DIR__ . '/vendor/autoload.php';
