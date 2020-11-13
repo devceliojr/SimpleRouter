@@ -15,10 +15,9 @@ RewriteRule ^(.*)$ index.php?route=/$1 [L,QSA]
 ___
 
 ## Namespace
-> o método **_namespace()_** é geralmente associado ao padrão [MVC](https://pt.wikipedia.org/wiki/MVC) e define
-> onde o determinada rota fará a busca por determinada classe.
+> O método **_namespace()_** é associado ao padrão [MVC](https://pt.wikipedia.org/wiki/MVC) e define
+> em que local a rota buscará pelo controlador.
 >
-
 #### Exemplo:
 
 ```
@@ -53,7 +52,7 @@ var_dump($route);
 ```php
 SimpleRouter\Application\Router: (object) [Object ID #3][2 properties]
     routes: (array) [1 element]
-        GET: (array) [2 elements****************]
+        GET: (array) [2 elements]
             /users/all: (string) "Controller@method"
             /users/{id}/profile: (string) "Controller@method"
 ```
@@ -134,7 +133,7 @@ $route->namespace('App/Controllers');
 $route->group();
 
 # Rota com callback.
-$route->post('/', function($data) {
+$route->get('/', function($data) {
     echo "<p>His name is <strong>{$data->name}</strong> and his age is <strong>{$data->age}</strong> years.</p>";
 });
 
