@@ -42,13 +42,13 @@ class Router extends Dispatch
     }
 
     /**
-     * @access public
+     * @access private
      * @param string $method
      * @param string $path
      * @param mixed $callback
      * @return void
      */
-    public function create(string $method, string $path, $callback): void
+    private function create(string $method, string $path, $callback): void
     {
         $this->route[$method][(!$this->group ? $path : "/{$this->group}{$path}")] = $callback;
     }
