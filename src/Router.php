@@ -103,7 +103,7 @@ class Router extends Request
             return $this->run($router);
         }
 
-        $this->error = $this->handlerError("Not Found", 404);
+        $this->handlerError("Not Found", 404);
         return false;
     }
 
@@ -143,7 +143,7 @@ class Router extends Request
         }
 
         if (! $router["action"]["controller"] || ! $router["action"]["method"]) {
-            $this->error = $this->handlerError("Bad request", 400);
+            $this->handlerError("Bad request", 400);
             return false;
         }
         
@@ -151,12 +151,12 @@ class Router extends Request
         $method = $router["action"]["method"];
 
         if (! class_exists($controller)) {
-            $this->error = $this->handlerError("Not Found", 404);
+            $this->handlerError("Not Found", 404);
             return false;
         }
 
         if (! method_exists($controller, $method)) {
-            $this->error = $this->handlerError("Not Implemented", 501);
+            $this->handlerError("Not Implemented", 501);
             return false;
         }
 
