@@ -12,7 +12,7 @@ use stdClass;
 
 class Router extends Request
 {
-    private string $namespace;
+    private ?string $path = null;
     private ?string $group = null;
     private ?string $oldGroup = null;
     private array $routes = [];
@@ -31,21 +31,21 @@ class Router extends Request
         );
     }
 
-    public function namespace(string $namespace): void
+    public function path(string $path): void
     {
-        if (empty($namespace)) {
-            throw new InvalidArgumentException("The namespace cannot be empty.");
+        if (empty($path)) {
+            $path = "/";
         }
 
-        if (substr($namespace, 0, 1) === "/") {
-            $namespace = substr($namespace, 1);
+        if (substr($path, 0, 1) !== "/") {
+            $path = "/" . $path;
         }
 
-        if (substr($namespace, -1) === "/") {
-            $namespace = substr($namespace, 0, -1);
+        if (substr($path, -1) === "/" && strlen($path) > 1) {
+            $path = substr($path, 0, -1);
         }
 
-        $this->namespace = str_replace("/", "\\", $namespace);
+        $this->path = $path;
     }
 
     public function group(?string $prefix, Closure $handler): void
@@ -107,6 +107,11 @@ class Router extends Request
         return false;
     }
 
+    public function error(): ?stdClass
+    {
+        return $this->error;
+    }
+
     private function addRoute(string $method, string $uri, array|Closure $handler): void
     {
         preg_match_all('/\{([^}]*)\}/', $uri, $matches);
@@ -124,7 +129,7 @@ class Router extends Request
             ];
         }
 
-        $this->routes[$method][$this->traitUri($uri, $this->group)] = [
+        $this->routes[$method][$this->traitUri($uri, $this->path, $this->group)] = [
             "action" => $handler,
             "parameters" => $parameters ?? []
         ];
