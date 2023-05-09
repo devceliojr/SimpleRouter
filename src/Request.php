@@ -45,13 +45,13 @@ abstract class Request
         )[$index];
     }
 
-    protected function traitUri(string $uri, ?string $group): string
+    protected function traitUri(string $uri, ?string $path, ?string $group): string
     {
-        if (substr($group . $uri, -1) === "/" && strlen($group . $uri) > 1) {
-            return substr($group . $uri, 0, -1);
+        if (substr($path . $group . $uri, -1) === "/" && strlen($path. $group . $uri) > 1) {
+            return substr($path . $group . $uri, 0, -1);
         }
         
-        return $group . $uri;
+        return str_replace("//", "/", ($path . $group . $uri));
     }
 
     protected function setParameters(string $uri, array $parameters): void
