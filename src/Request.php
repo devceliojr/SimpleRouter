@@ -17,6 +17,14 @@ abstract class Request
             "headers" => (object) getallheaders(),
             "body" => new stdClass
         ];
+
+        if (! empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $this->request->headers->{"Internet-Protocol"} = filter_input(INPUT_SERVER, 'HTTP_CLIENT_IP', FILTER_VALIDATE_IP);
+        } elseif (! empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $this->request->headers->{"Internet-Protocol"} = filter_input(INPUT_SERVER, 'HTTP_X_FORWARDED_FOR', FILTER_VALIDATE_IP);
+        } else {
+            $this->request->headers->{"Internet-Protocol"} = filter_input(INPUT_SERVER, 'REMOTE_ADDR', FILTER_VALIDATE_IP);
+        }
     }
 
     protected function uriExists(string $uri) {
