@@ -112,6 +112,11 @@ class Router extends Request
         return $this->error;
     }
 
+    public function getHeader(): ?stdClass
+    {
+        return $this->request->headers;
+    }
+
     private function addRoute(string $method, string $uri, array|Closure $handler): void
     {
         preg_match_all('/\{([^}]*)\}/', $uri, $matches);
