@@ -18,16 +18,48 @@ class Router extends Request
     private array $routes = [];
     private ?stdClass $error = null;
 
-    public function __call(string $name, array $arguments): void
+    public function get(string $router, array|Closure $arguments): void
     {
-        if(! in_array($name, ["get", "post", "put", "patch", "delete"])) {
-            throw new Error("Call to undefined method {$name}");
-        }
-
         $this->addRoute(
-            strtoupper($name),
-            $arguments[0],
-            $arguments[1]
+            method: "GET",
+            uri: $router,
+            handler: $arguments
+        );
+    }
+
+    public function post(string $router, array $arguments): void
+    {
+        $this->addRoute(
+            method: "POST",
+            uri: $router,
+            handler: $arguments
+        );
+    }
+
+    public function put(string $router, array $arguments): void
+    {
+        $this->addRoute(
+            method: "PUT",
+            uri: $router,
+            handler: $arguments
+        );
+    }
+
+    public function patch(string $router, array $arguments): void
+    {
+        $this->addRoute(
+            method: "PATCH",
+            uri: $router,
+            handler: $arguments
+        );
+    }
+
+    public function delete(string $router, array $arguments): void
+    {
+        $this->addRoute(
+            method: "DELETE",
+            uri: $router,
+            handler: $arguments
         );
     }
 
