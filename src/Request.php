@@ -85,6 +85,8 @@ abstract class Request
     {
         return array_merge(
             $_REQUEST,
+            $_FILES,
+            $_COOKIE,
             (array) json_decode(file_get_contents('php://input'), true)
         );
     }
