@@ -27,7 +27,7 @@ class Router extends Request
         );
     }
 
-    public function post(string $router, array $arguments): void
+    public function post(string $router, array|Closure $arguments): void
     {
         $this->addRoute(
             method: "POST",
@@ -36,7 +36,7 @@ class Router extends Request
         );
     }
 
-    public function put(string $router, array $arguments): void
+    public function put(string $router, array|Closure $arguments): void
     {
         $this->addRoute(
             method: "PUT",
@@ -45,7 +45,7 @@ class Router extends Request
         );
     }
 
-    public function patch(string $router, array $arguments): void
+    public function patch(string $router, array|Closure $arguments): void
     {
         $this->addRoute(
             method: "PATCH",
@@ -54,7 +54,7 @@ class Router extends Request
         );
     }
 
-    public function delete(string $router, array $arguments): void
+    public function delete(string $router, array|Closure $arguments): void
     {
         $this->addRoute(
             method: "DELETE",
